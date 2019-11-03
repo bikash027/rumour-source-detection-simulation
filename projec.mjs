@@ -12,38 +12,27 @@ const links=[];
 let select='';
 let data='';
 let nodesCount=5;
-// const removeEventListeners=function(){
-// 	for(let i=0;i<nodesCount;i++){
-// 		nodes[i].svg.removeEventListener('click',makeEndPoints);
-// 	}
-// }
 const makeLinks=function(edges){
-	for(let i=0;i<edges.length;i++){
-		const l=new link(edges[i],nodes,select);
-		// ind++;
-		links.push(l);
-	}
+
+	// for(let i=0;i<edges.length;i++){
+	// 	const l=new link(edges[i],nodes,select);
+	// 	// ind++;
+	// 	links.push(l);
+	// }
+	let i=0;
+    const t=setInterval(()=>{
+    	if(i>=edges.length)
+    		clearInterval(t);
+    	else{
+    		// console.log(ind);
+	    	const l=new link(edges[i],nodes,select);
+			i++;
+			links.push(l);
+    	}
+	},15000/edges.length);
+	// });
 }
-// const makeEndPoints=function(e){
-// 	if(e.target.tagName!=='circle')return;
-// 	console.log(e.target);
-// 	if(ar.length<1){
-// 		ar.push(e.target.parentElement);
-// 	}
-// 	else{
-// 		if(links.length==max_links){
-// 			removeEventListeners();
-// 			return;
-// 		}
-// 		if(ar[0]!==e.target.parentElement){
-// 		ar.push(e.target.parentElement);
-// 		makeLink();
-// 		ar.pop();
-// 		ar.pop();
-// 	}
-// 	}
-// 	// e.stopPropagation();
-// }
+
 const startSimulation=function(){
 	csv()
 	.fromString(data)
@@ -59,15 +48,7 @@ const startSimulation=function(){
 	    instant=instant.getTime();
 	    console.log(nodesCount,jsonObj.length);
 	    makeLinks(jsonObj);
-	//     const t=setInterval(()=>{
-	//     	if(ind>=jsonObj.length)
-	//     		clearInterval(t);
-	//     	else{
-	//     		// console.log(ind);
-	// 	    	makeLink(jsonObj)
-	//     	}
-	// 	},20000/jsonObj.length);
-	// });
+	
 	});
 }
 
@@ -103,11 +84,12 @@ submit.addEventListener('click',function(){
 		data=football;
 	}
 	startSimulation();
+	submit.disabled=true;
 	// makeGraph();
 });
 detect.addEventListener('click',function(){
 	const rumourSource=detectRumourSource(nodes,links);
-	decorateNode(links,nodes[rumourSource],instant,select,nodes)
+	decorateNode(links,nodes[rumourSource],instant,select,nodes);
 });
 const div=document.querySelector('#div')
 div.style.position='absolute';

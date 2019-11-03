@@ -4,8 +4,6 @@ export default class node{
 		const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
 		svg.setAttribute('width',100);
 		svg.setAttribute('height',100);
-		//svg.setAttribute('viewBox','0 0 100 100');
-		// svg.setAttribute('style','width:30vh;height:30vh;margin-top:20vh;margin-left:40vw;');
 		document.querySelector('body').appendChild(div);
 		const circle=document.createElementNS('http://www.w3.org/2000/svg','circle');
 		// <circle cx="50" cy="50" r="50"/>

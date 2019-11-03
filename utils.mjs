@@ -1,4 +1,6 @@
 import {adjacencyList} from '/adjacencyList.mjs';
+
+
 export const beautify=function(jsonObj){
 	jsonObj=jsonObj.map(function(edge){
 		const source=parseInt(edge.Source);
@@ -97,13 +99,6 @@ export const decorateNode=function(links,rumourSource,instant,select,nodes){
 	if(select!=='dolphin')
 		max+=1;
 	table.lastElementChild.textContent="Rumour Source: "+ max;
-	// for(let i=0;i<links.length;i++){
-	// 	if(!(links[i].source.value===rumourSource.value))
-	// 		continue;
-		// const p=document.createElement('p');
-		// p.textContent=(max)+'_________'+(links[].destination.value);
-		// table.appendChild(p);
-	// }
 	decorateLinks(nodes,links,rumourSource);
 	// bfsTimeStamp(nodes,links);
 

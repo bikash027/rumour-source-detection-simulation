@@ -1,4 +1,6 @@
 import {adjacencyList} from '/adjacencyList.mjs';
+
+
 export const detectRumourSource=function(nodes,links){
 	const nodesCount=nodes.length;
 	let sizeOfSubtree=[];
